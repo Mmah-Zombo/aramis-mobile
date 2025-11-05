@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-poppins: var(--font-poppins);
+    --font-gideon-roman: var(--font-gideon-roman);
+    --font-dm-serif-display: var(--font-dm-serif-display);
+    --font-lato: var(--font-lato);
+
+    /* Custom Brand Colors */
+    --color-primary-dark-purple: #32021A;
+    --color-primary-tyrian-purple: #660033;
+    --color-primary-folly: #FC5260;
+    --color-primary-licorice: #17020C;
+
+    --color-secondary-melon: #DEA193;
+    --color-secondary-light: #DEA193;
+
+    --color-eerie-black: #252525;
+    --color-jet: #333333;
+    --color-blush: #D9596E;
+    --color-china-rose: #9C6681;
+    --color-lavender-web: #DBE3FF;
+    --color-ghost-white: #F8F9FF;
+    --color-dim-gray: #616161;
+    --color-anti-flash-white: #EEEEEE;
+    --color-seasalt: #FAFAFA;
+
+    --color-gray: #757575;
+    --color-silver: #BDBDBD;
+    --color-medium-slate-blue: #7B76F1;
+    --color-onyx: #424242;
+    --color-magnolia: #F9F2FF;
+    --color-tekhelet: #4E2D92;
+    --color-melon: #F4B9A6;
+}
+/* 
+@layer components;
+
+@layer components {
+    .gradient-text {
+        @apply bg-gradient-to-b from-primary-folly to-primary-dark-purple text-transparent;
+    }
+
+    .gradient-btn {
+        @apply bg-gradient-to-b from-primary-folly to-primary-tyrian-purple text-white font-poppins py-2 px-8 rounded-full;
+    }
+
+    .info-card {
+        @apply p-4 flex flex-col items-start justify-between bg-gradient-to-r from-primary-tyrian-purple/20 via-blush/15 to-blush/15 w-full md:w-44 h-36 rounded-2xl;
+    }
+
+    .contact-input-field {
+        @apply w-full pl-14 pr-4 py-4 border border-gray-200 rounded-[1.3rem] focus:outline-none focus:ring-2 focus:ring-primary-tyrian-purple focus:border-transparent font-poppins text-base text-gray-700 placeholder-gray-400;
+    }
+
+    .social-auth-button {
+        @apply w-full h-fit text-nowrap py-3 md:py-4 items-center justify-center border border-anti-flash-white rounded-full text-sm font-poppins text-gray-600 bg-seasalt hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+    }
+
+    .auth-input-field {
+        @apply w-full px-3 py-2 border-b border-silver placeholder-gray-400 focus:outline-none focus:border-secondary-light;
+    }
+
+    .gradient-bg {
+        @apply bg-gradient-to-tr from-primary-licorice via-primary-tyrian-purple to-primary-licorice/90;
+    }
+} */

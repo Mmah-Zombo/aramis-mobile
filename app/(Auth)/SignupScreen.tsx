@@ -1,15 +1,15 @@
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
-    ScrollView,
-    StatusBar,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ScrollView,
+  StatusBar,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
+import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -25,7 +25,7 @@ export default function SignUpScreen() {
       <ScrollView className="flex-1" contentContainerClassName="px-8 pt-5">
         {/* Header */}
         <View className="mt-5 mb-10">
-          <Text className="text-5xl font-bold text-[#1a1a2e] leading-[58px] mb-4">
+          <Text className="text-4xl font-bold text-[#1a1a2e] leading-[3rem] mb-4">
             Create new{"\n"}account
           </Text>
           <View className="flex-row items-center">
