@@ -17,12 +17,12 @@ export default function ModalScreen() {
       <Link href="/(Auth)/SigninScreen" style={styles.link}>
         <ThemedText type="link">Go to Sign In Screen</ThemedText>
       </Link>
-      <Link href="/(Auth)/OTPVerificationScreen" style={styles.link}>
+      {/* <Link href="/(Auth)/OTPVerificationScreen" style={styles.link}>
         <ThemedText type="link">Go to OTP Verification Screen</ThemedText>
       </Link>
       <Link href="/(Auth)/VerificationSuccessScreen" style={styles.link}>
         <ThemedText type="link">Go to Verification Success Screen</ThemedText>
-      </Link>
+      </Link> */}
       {/* <Link href="/(Auth)/LoginScreen" style={styles.link}>
         <ThemedText type="link">Go to Login Screen</ThemedText>
       </Link>
