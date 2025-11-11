@@ -1,6 +1,8 @@
 import BottomNav from "@/components/BottomNav";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
+
 import {
     ScrollView,
     StatusBar,
@@ -50,24 +52,25 @@ export default function ProfileScreen({
   userName = "Edward Bob",
   userEmail = "edwardbobkamara@gmail.com",
 }: ProfileScreenProps) {
+    const router = useRouter();
   const handleLogout = () => {
     console.log("Logout pressed");
   };
 
   const handleEditProfile = () => {
-    navigation?.navigate("EditProfile");
+    router.push('/(Main)/(Profile)/EditProfileScreen');
   };
 
   const handleAccountSecurity = () => {
-    console.log("Account Security pressed");
+    router.push('/(Main)/(Profile)/AccountSecurityScreen')
   };
 
   const handleGeneralSettings = () => {
-    console.log("General Settings pressed");
+    router.push('/(Main)/(Profile)/GeneralSettingsScreen')
   };
 
   const handleHelpCentre = () => {
-    console.log("Help Centre pressed");
+    router.push('/(Main)/(Profile)/LanguageScreen')
   };
 
   const handleHomePress = () => {

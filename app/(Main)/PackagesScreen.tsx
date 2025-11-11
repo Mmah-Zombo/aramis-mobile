@@ -1,12 +1,13 @@
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import React from "react";
 import {
-    ScrollView,
-    StatusBar,
-    Text,
-    TouchableOpacity,
-    View,
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -77,20 +78,21 @@ const PackageCard = ({
 };
 
 export default function PackagesScreen() {
+  const router = useRouter();
   const handleOneTimePurchase = () => {
     console.log("One Time Purchase selected");
   };
 
   const handleMonthlySubscription = () => {
-    console.log("Monthly Subscription selected");
+    router.push("/(Main)/CarePackageScreen");
   };
 
   const handleCarePackages = () => {
-    console.log("Care Packages selected");
+    router.push("/(Main)/CarePackageScreen");
   };
 
   const handleCustomizePackages = () => {
-    console.log("Customize Packages selected");
+    router.push("/(Main)/CustomizePackageScreen");
   };
 
   return (
