@@ -13,17 +13,20 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SignInScreen() {
-  const [email, setEmail] = useState("franklinclinton@gmail.com");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleSignIn = () => {
-       // Add your sign-in logic here if needed
-       router.push('/HomeScreen');
-    };
+  const handleSignIn = () => {
+    // Add your sign-in logic here if needed
+    router.push("/HomeScreen");
+  };
+
   return (
     <SafeAreaView className="px-4 flex-1 bg-gray-50">
       <StatusBar barStyle="dark-content" />
@@ -49,7 +52,9 @@ export default function SignInScreen() {
         </View>
 
         {/* Email Input */}
-        <View className="flex-row items-center bg-white rounded-2xl px-4 py-5 mb-4 border border-gray-200">
+        <View
+          className={`flex-row items-center bg-white rounded-2xl px-4 py-5 mb-4 border ${isEmailFocused ? "border-[#ff4757]" : "border-gray-100/10"}`}
+        >
           <View className="w-8 h-8 rounded-lg bg-gray-100 items-center justify-center mr-3">
             <Ionicons name="mail" size={20} color="#1a1a2e" />
           </View>
@@ -61,11 +66,15 @@ export default function SignInScreen() {
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
+            onFocus={() => setIsEmailFocused(true)}
+            onBlur={() => setIsEmailFocused(false)}
           />
         </View>
 
         {/* Password Input */}
-        <View className="flex-row items-center bg-white rounded-2xl px-4 py-5 mb-4 border-2 border-[#ff4757]">
+        <View
+          className={`flex-row items-center bg-white rounded-2xl px-4 py-5 mb-4 border ${isPasswordFocused ? "border-[#ff4757]" : "border-gray-100/10"}`}
+        >
           <View className="w-8 h-8 rounded-lg bg-red-50 items-center justify-center mr-3">
             <Ionicons name="lock-closed" size={20} color="#ff4757" />
           </View>
@@ -77,6 +86,8 @@ export default function SignInScreen() {
             onChangeText={setPassword}
             secureTextEntry={!showPassword}
             autoCapitalize="none"
+            onFocus={() => setIsPasswordFocused(true)}
+            onBlur={() => setIsPasswordFocused(false)}
           />
           <TouchableOpacity
             className="p-2"

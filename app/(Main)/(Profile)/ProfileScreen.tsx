@@ -1,12 +1,15 @@
+import BottomNav from "@/components/BottomNav";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import {
+    ScrollView,
     StatusBar,
     Text,
     TouchableOpacity,
     View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 interface MenuItemProps {
   icon: string;
   label: string;
@@ -91,91 +94,66 @@ export default function ProfileScreen({
         </TouchableOpacity>
       </View>
 
-      {/* Profile Section */}
-      <View className="bg-gray-50 mx-6 rounded-3xl p-8 items-center mt-4 mb-6">
-        {/* Avatar with Gradient */}
-        <View className="w-44 h-44 rounded-full overflow-hidden items-center justify-center mb-6">
-          <LinearGradient
-            colors={["#ff6b9d", "#e8576b", "#c2185b"]}
-            className="w-full h-full items-center justify-center"
-          >
-            <Ionicons name="person" size={72} color="#ffffff" />
-          </LinearGradient>
+     <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+
+        {/* Profile Section */}
+        <View className="bg-gray-50 mx-6 rounded-3xl p-8 items-center mt-4 mb-6">
+            {/* Avatar with Gradient */}
+            <View className="w-44 h-44 rounded-full overflow-hidden items-center justify-center mb-6">
+            <LinearGradient
+                colors={["#ff6b9d", "#e8576b", "#c2185b"]}
+                className="w-full h-full items-center justify-center"
+            >
+                <Ionicons name="person" size={72} color="#ffffff" />
+            </LinearGradient>
+            </View>
+
+            {/* User Info */}
+            <Text className="text-gray-900 text-2xl font-bold mb-2">
+            {userName}
+            </Text>
+            <Text className="text-gray-500 text-base">{userEmail}</Text>
         </View>
 
-        {/* User Info */}
-        <Text className="text-gray-900 text-2xl font-bold mb-2">
-          {userName}
-        </Text>
-        <Text className="text-gray-500 text-base">{userEmail}</Text>
-      </View>
+        {/* Menu Items */}
+        <View className="px-6">
+            <MenuItem
+            icon="person-outline"
+            label="Edit Profile"
+            onPress={handleEditProfile}
+            iconColor="#ff6b9d"
+            />
+            <MenuItem
+            icon="shield-checkmark-outline"
+            label="Account Security"
+            onPress={handleAccountSecurity}
+            iconColor="#ff6b9d"
+            />
+            <MenuItem
+            icon="settings-outline"
+            label="General Settings"
+            onPress={handleGeneralSettings}
+            iconColor="#ff8a95"
+            />
+            <MenuItem
+            icon="help-circle-outline"
+            label="Help Centre"
+            onPress={handleHelpCentre}
+            iconColor="#ff6b9d"
+            />
+        </View>
 
-      {/* Menu Items */}
-      <View className="px-6">
-        <MenuItem
-          icon="person-outline"
-          label="Edit Profile"
-          onPress={handleEditProfile}
-          iconColor="#ff6b9d"
-        />
-        <MenuItem
-          icon="shield-checkmark-outline"
-          label="Account Security"
-          onPress={handleAccountSecurity}
-          iconColor="#ff6b9d"
-        />
-        <MenuItem
-          icon="settings-outline"
-          label="General Settings"
-          onPress={handleGeneralSettings}
-          iconColor="#ff8a95"
-        />
-        <MenuItem
-          icon="help-circle-outline"
-          label="Help Centre"
-          onPress={handleHelpCentre}
-          iconColor="#ff6b9d"
-        />
-      </View>
+        {/* App Version */}
+        <View className="items-center mt-6">
+            <Text className="text-gray-400 text-sm">App version 1.0.0.1</Text>
+        </View>
 
-      {/* App Version */}
-      <View className="items-center mt-6">
-        <Text className="text-gray-400 text-sm">App version 1.0.0.1</Text>
-      </View>
+        {/* Spacer */}
+        <View className="flex-1" />
+     </ScrollView>
 
-      {/* Spacer */}
-      <View className="flex-1" />
 
-      {/* Bottom Navigation */}
-      <View className="flex-row items-center justify-around px-8 py-4 bg-white border-t border-gray-100">
-        <TouchableOpacity
-          className="items-center py-2"
-          onPress={handleHomePress}
-        >
-          <Ionicons name="home-outline" size={28} color="#9ca3af" />
-          <Text className="text-gray-500 text-xs mt-1">Home</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          className="items-center py-2"
-          onPress={handlePairPress}
-        >
-          <Ionicons name="heart-outline" size={28} color="#9ca3af" />
-          <Text className="text-gray-500 text-xs mt-1">Pair</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity className="items-center py-2">
-          <Ionicons name="person" size={28} color="#c2185b" />
-          <Text className="text-[#c2185b] text-xs mt-1 font-semibold">
-            Profile
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Home Indicator */}
-      <View className="items-center pb-2">
-        <View className="w-32 h-1 bg-gray-900 rounded-full" />
-      </View>
+      <BottomNav activeTab="profile"></BottomNav>
     </SafeAreaView>
   );
 }

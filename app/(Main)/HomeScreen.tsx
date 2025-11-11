@@ -1,3 +1,4 @@
+import BottomNav from "@/components/BottomNav";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
@@ -212,38 +213,7 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
       {/* Bottom Navigation */}
-      <View className="left-0 right-0 bg-white border-t border-gray-200 pb-6">
-        <View className="flex-row items-center justify-around pt-3">
-          <TouchableOpacity className="items-center">
-            <Ionicons name="home" size={24} color="#4a1942" />
-            <Text className="text-[#4a1942] text-xs font-medium mt-1">
-              Home
-            </Text>
-            <View className="w-12 h-1 bg-[#4a1942] rounded-full mt-1" />
-          </TouchableOpacity>
-
-          <TouchableOpacity className="items-center">
-            <Ionicons name="grid-outline" size={24} color="#9ca3af" />
-            <Text className="text-gray-400 text-xs font-medium mt-1">
-              Packages
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity className="items-center">
-            <Ionicons name="stats-chart-outline" size={24} color="#9ca3af" />
-            <Text className="text-gray-400 text-xs font-medium mt-1">
-              Tracker
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity className="items-center">
-            <Ionicons name="person-outline" size={24} color="#9ca3af" />
-            <Text className="text-gray-400 text-xs font-medium mt-1">
-              Profile
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <BottomNav activeTab="home"></BottomNav>
     </SafeAreaView>
   );
 }
