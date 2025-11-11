@@ -1,229 +1,223 @@
-// import { Ionicons } from "@expo/vector-icons";
-// import { LinearGradient } from "expo-linear-gradient";
-// import { styled } from "nativewind";
-// import React, { useState } from "react";
-// import {
-//   Dimensions,
-//   Image,
-//   SafeAreaView,
-//   ScrollView,
-//   StatusBar,
-//   Text,
-//   TouchableOpacity,
-//   View,
-// } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import { remapProps } from "nativewind"; // Add this import for third-party component support
+import React, { useState } from "react";
+import {
+    Dimensions,
+    ScrollView,
+    StatusBar,
+    Text,
+    TouchableOpacity,
+    View
+} from "react-native";
 
-// const StyledView = styled(View);
-// const StyledText = styled(Text);
-// const StyledTouchableOpacity = styled(TouchableOpacity);
-// const StyledScrollView = styled(ScrollView);
-// const StyledSafeAreaView = styled(SafeAreaView);
-// const StyledImage = styled(Image);
-// const StyledLinearGradient = styled(LinearGradient);
+import { SafeAreaView } from "react-native-safe-area-context";
 
-// const { width } = Dimensions.get("window");
+// Remap for LinearGradient (maps className to its style prop)
+const StyledLinearGradient = remapProps(LinearGradient, { className: "style" });
 
-// export default function ProductDetailScreen() {
-//   const [quantity, setQuantity] = useState(1);
-//   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-//   const [isFavorite, setIsFavorite] = useState(false);
-//   const [showFullDescription, setShowFullDescription] = useState(false);
+const { width } = Dimensions.get("window");
 
-//   const productImages = [
-//     // require("./assets/package-1.jpg"), // Replace with actual images
-//     // require("./assets/package-2.jpg"),
-//     // require("./assets/package-3.jpg"),
-//     // require("./assets/package-4.jpg"),
-//     "", "", "", ""
-//   ];
+export default function ProductDetailScreen() {
+  const [quantity, setQuantity] = useState(1);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
-//   const items = [
-//     "Pads & Tampons",
-//     "Heating Patch",
-//     "Sucks",
-//     "Snacks",
-//     "Scent Candles",
-//     "Lip Gloss",
-//     "Face Sheets",
-//     "Lip Gloss",
-//   ];
+  const productImages = [
+    // require("./assets/package-1.jpg"), // Replace with actual images
+    // require("./assets/package-2.jpg"),
+    // require("./assets/package-3.jpg"),
+    // require("./assets/package-4.jpg"),
+    "",
+    "",
+    "",
+    "",
+  ];
 
-//   const updateQuantity = (delta: number) => {
-//     setQuantity(Math.max(1, quantity + delta));
-//   };
+  const items = [
+    "Pads & Tampons",
+    "Heating Patch",
+    "Sucks",
+    "Snacks",
+    "Scent Candles",
+    "Lip Gloss",
+    "Face Sheets",
+    "Lip Gloss",
+  ];
 
-//   const handleAddToCart = () => {
-//     console.log("Add to cart:", quantity);
-//     // Add to cart logic
-//   };
+  const updateQuantity = (delta: number) => {
+    setQuantity(Math.max(1, quantity + delta));
+  };
 
-//   return (
-//     <StyledSafeAreaView className="flex-1 bg-white">
-//       <StatusBar barStyle="light-content" />
+  const handleAddToCart = () => {
+    console.log("Add to cart:", quantity);
+    // Add to cart logic
+  };
 
-//       {/* Product Image Section */}
-//       <StyledView className="relative">
-//         <StyledImage
-//           source={productImages[selectedImageIndex]}
-//           className="w-full h-96"
-//           resizeMode="cover"
-//         />
+  return (
+    <SafeAreaView className="flex-1 bg-white">
+      <StatusBar barStyle="light-content" />
 
-//         {/* Overlay Buttons */}
-//         <StyledView className="absolute top-12 left-0 right-0 flex-row justify-between px-6">
-//           <StyledTouchableOpacity className="w-12 h-12 bg-gray-800/50 rounded-full items-center justify-center">
-//             <Ionicons name="chevron-back" size={24} color="#ffffff" />
-//           </StyledTouchableOpacity>
+      {/* Product Image Section */}
+      <View className="relative">
+        {/* <Image
+          source=""
+          className="w-full h-96"
+          resizeMode="cover"
+        /> */}
 
-//           <StyledTouchableOpacity
-//             className="w-12 h-12 bg-gray-800/50 rounded-full items-center justify-center"
-//             onPress={() => setIsFavorite(!isFavorite)}
-//           >
-//             <Ionicons
-//               name={isFavorite ? "heart" : "heart-outline"}
-//               size={24}
-//               color="#ff6b9d"
-//             />
-//           </StyledTouchableOpacity>
-//         </StyledView>
-//       </StyledView>
+        {/* Overlay Buttons */}
+        <View className="absolute top-12 left-0 right-0 flex-row justify-between px-6">
+          <TouchableOpacity className="w-12 h-12 bg-gray-800/50 rounded-full items-center justify-center">
+            <Ionicons name="chevron-back" size={24} color="#ffffff" />
+          </TouchableOpacity>
 
-//       <StyledScrollView
-//         className="flex-1 bg-white"
-//         showsVerticalScrollIndicator={false}
-//       >
-//         {/* Image Thumbnails */}
-//         <StyledView className="px-6 py-6 flex-row gap-3">
-//           {productImages.map((_, index) => (
-//             <StyledTouchableOpacity
-//               key={index}
-//               className={`w-16 h-16 rounded-2xl overflow-hidden ${
-//                 selectedImageIndex === index
-//                   ? "border-3 border-[#c2185b]"
-//                   : "border border-gray-200"
-//               }`}
-//               onPress={() => setSelectedImageIndex(index)}
-//             >
-//               <StyledView className="w-full h-full bg-gray-200" />
-//             </StyledTouchableOpacity>
-//           ))}
-//         </StyledView>
+          <TouchableOpacity
+            className="w-12 h-12 bg-gray-800/50 rounded-full items-center justify-center"
+            onPress={() => setIsFavorite(!isFavorite)}
+          >
+            <Ionicons
+              name={isFavorite ? "heart" : "heart-outline"}
+              size={24}
+              color="#ff6b9d"
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
 
-//         {/* Product Info */}
-//         <StyledView className="px-6">
-//           <StyledView className="flex-row items-start justify-between mb-3">
-//             <StyledText className="text-3xl font-bold text-[#4a1942] flex-1">
-//               REGULAR PACK
-//             </StyledText>
-//             <StyledText className="text-2xl font-bold text-[#c2185b] ml-4">
-//               LE 600.00
-//             </StyledText>
-//           </StyledView>
+      <ScrollView
+        className="flex-1 bg-white"
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Image Thumbnails */}
+        <View className="px-6 py-6 flex-row gap-3">
+          {productImages.map((_, index) => (
+            <TouchableOpacity
+              key={index}
+              className={`w-16 h-16 rounded-2xl overflow-hidden ${
+                selectedImageIndex === index
+                  ? "border-3 border-[#c2185b]"
+                  : "border border-gray-200"
+              }`}
+              onPress={() => setSelectedImageIndex(index)}
+            >
+              <View className="w-full h-full bg-gray-200" />
+            </TouchableOpacity>
+          ))}
+        </View>
 
-//           {/* Rating */}
-//           <StyledView className="flex-row items-center mb-6">
-//             {[1, 2, 3, 4, 5].map((star) => (
-//               <Ionicons
-//                 key={star}
-//                 name={star <= 4 ? "star" : "star-outline"}
-//                 size={20}
-//                 color={star <= 4 ? "#fbbf24" : "#d1d5db"}
-//                 style={{ marginRight: 4 }}
-//               />
-//             ))}
-//             <StyledText className="text-gray-400 ml-2">(4.5)</StyledText>
-//           </StyledView>
+        {/* Product Info */}
+        <View className="px-6">
+          <View className="flex-row items-start justify-between mb-3">
+            <Text className="text-3xl font-bold text-[#4a1942] flex-1">
+              REGULAR PACK
+            </Text>
+            <Text className="text-2xl font-bold text-[#c2185b] ml-4">
+              LE 600.00
+            </Text>
+          </View>
 
-//           {/* Quantity and Share */}
-//           <StyledView className="flex-row items-center justify-between mb-8">
-//             <StyledView className="flex-row items-center border border-gray-200 rounded-xl">
-//               <StyledTouchableOpacity
-//                 className="w-12 h-12 items-center justify-center"
-//                 onPress={() => updateQuantity(-1)}
-//               >
-//                 <Ionicons name="remove" size={20} color="#4a1942" />
-//               </StyledTouchableOpacity>
+          {/* Rating */}
+          <View className="flex-row items-center mb-6">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Ionicons
+                key={star}
+                name={star <= 4 ? "star" : "star-outline"}
+                size={20}
+                color={star <= 4 ? "#fbbf24" : "#d1d5db"}
+                style={{ marginRight: 4 }}
+              />
+            ))}
+            <Text className="text-gray-400 ml-2">(4.5)</Text>
+          </View>
 
-//               <StyledText className="text-xl font-bold text-gray-900 px-6">
-//                 {quantity}
-//               </StyledText>
+          {/* Quantity and Share */}
+          <View className="flex-row items-center justify-between mb-8">
+            <View className="flex-row items-center border border-gray-200 rounded-xl">
+              <TouchableOpacity
+                className="w-12 h-12 items-center justify-center"
+                onPress={() => updateQuantity(-1)}
+              >
+                <Ionicons name="remove" size={20} color="#4a1942" />
+              </TouchableOpacity>
 
-//               <StyledTouchableOpacity
-//                 className="w-12 h-12 items-center justify-center"
-//                 onPress={() => updateQuantity(1)}
-//               >
-//                 <Ionicons name="add" size={20} color="#4a1942" />
-//               </StyledTouchableOpacity>
-//             </StyledView>
+              <Text className="text-xl font-bold text-gray-900 px-6">
+                {quantity}
+              </Text>
 
-//             <StyledTouchableOpacity className="w-12 h-12 items-center justify-center">
-//               <Ionicons name="share-outline" size={28} color="#4a1942" />
-//             </StyledTouchableOpacity>
-//           </StyledView>
+              <TouchableOpacity
+                className="w-12 h-12 items-center justify-center"
+                onPress={() => updateQuantity(1)}
+              >
+                <Ionicons name="add" size={20} color="#4a1942" />
+              </TouchableOpacity>
+            </View>
 
-//           {/* Description */}
-//           <StyledView className="mb-8">
-//             <StyledText className="text-lg font-bold text-gray-900 mb-3">
-//               DESCRIPTION
-//             </StyledText>
-//             <StyledText className="text-gray-500 text-base leading-6">
-//               Lorem Ipsum is simply dummy text of the printing and typesetting
-//               industry. Lorem Ipsum has been the industry's book
-//               {!showFullDescription && "..."}
-//               <StyledText
-//                 className="text-gray-900 font-semibold underline"
-//                 onPress={() => setShowFullDescription(!showFullDescription)}
-//               >
-//                 detail
-//               </StyledText>
-//             </StyledText>
-//           </StyledView>
+            <TouchableOpacity className="w-12 h-12 items-center justify-center">
+              <Ionicons name="share-outline" size={28} color="#4a1942" />
+            </TouchableOpacity>
+          </View>
 
-//           {/* Items */}
-//           <StyledView className="mb-8">
-//             <StyledText className="text-2xl font-bold text-gray-900 mb-4">
-//               Items
-//             </StyledText>
-//             <StyledView className="flex-row flex-wrap gap-3">
-//               {items.map((item, index) => (
-//                 <StyledView
-//                   key={index}
-//                   className="bg-[#e8a598] px-6 py-3 rounded-full"
-//                 >
-//                   <StyledText className="text-[#4a1942] text-base font-medium">
-//                     {item}
-//                   </StyledText>
-//                 </StyledView>
-//               ))}
-//             </StyledView>
-//           </StyledView>
-//         </StyledView>
-//       </StyledScrollView>
+          {/* Description */}
+          <View className="mb-8">
+            <Text className="text-lg font-bold text-gray-900 mb-3">
+              DESCRIPTION
+            </Text>
+            <Text className="text-gray-500 text-base leading-6">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the {"industry's"} book
+              {!showFullDescription && "..."}
+              <Text
+                className="text-gray-900 font-semibold underline"
+                onPress={() => setShowFullDescription(!showFullDescription)}
+              >
+                detail
+              </Text>
+            </Text>
+          </View>
 
-//       {/* Add to Cart Button */}
-//       <StyledView className="px-6 pb-8 pt-4 bg-white">
-//         <StyledTouchableOpacity
-//           className="rounded-2xl overflow-hidden"
-//           onPress={handleAddToCart}
-//         >
-//           <StyledLinearGradient
-//             colors={["#ff6b9d", "#e91e63", "#c2185b"]}
-//             start={{ x: 0, y: 0 }}
-//             end={{ x: 1, y: 1 }}
-//             className="py-5 flex-row items-center justify-center"
-//           >
-//             <Ionicons
-//               name="bag-outline"
-//               size={24}
-//               color="#ffffff"
-//               style={{ marginRight: 12 }}
-//             />
-//             <StyledText className="text-white text-lg font-bold">
-//               ADD TO
-//             </StyledText>
-//           </StyledLinearGradient>
-//         </StyledTouchableOpacity>
-//       </StyledView>
-//     </StyledSafeAreaView>
-//   );
-// }
+          {/* Items */}
+          <View className="mb-8">
+            <Text className="text-2xl font-bold text-gray-900 mb-4">Items</Text>
+            <View className="flex-row flex-wrap gap-3">
+              {items.map((item, index) => (
+                <View
+                  key={index}
+                  className="bg-[#e8a598] px-6 py-3 rounded-full"
+                >
+                  <Text className="text-[#4a1942] text-base font-medium">
+                    {item}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+
+      {/* Add to Cart Button */}
+      <View className="px-6 pb-8 pt-4 bg-white">
+        <TouchableOpacity
+          className="rounded-2xl overflow-hidden"
+          onPress={handleAddToCart}
+        >
+          <StyledLinearGradient
+            colors={["#ff6b9d", "#e91e63", "#c2185b"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            className="py-5 flex-row items-center justify-center"
+          >
+            <Ionicons
+              name="bag-outline"
+              size={24}
+              color="#ffffff"
+              style={{ marginRight: 12 }}
+            />
+            <Text className="text-white text-lg font-bold">ADD TO</Text>
+          </StyledLinearGradient>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+}

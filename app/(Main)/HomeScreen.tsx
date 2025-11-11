@@ -2,11 +2,11 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
-    ScrollView,
-    StatusBar,
-    Text,
-    TouchableOpacity,
-    View
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Svg, { Circle } from "react-native-svg";
@@ -212,7 +212,7 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
       {/* Bottom Navigation */}
-      <View className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 pb-6">
+      <View className="left-0 right-0 bg-white border-t border-gray-200 pb-6">
         <View className="flex-row items-center justify-around pt-3">
           <TouchableOpacity className="items-center">
             <Ionicons name="home" size={24} color="#4a1942" />

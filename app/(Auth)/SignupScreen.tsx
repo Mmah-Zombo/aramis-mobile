@@ -20,7 +20,7 @@ export default function SignUpScreen() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50">
+    <SafeAreaView className="px-4 flex-1 bg-gray-50">
       <StatusBar barStyle="dark-content" />
       <ScrollView className="flex-1" contentContainerClassName="px-8 pt-5">
         {/* Header */}

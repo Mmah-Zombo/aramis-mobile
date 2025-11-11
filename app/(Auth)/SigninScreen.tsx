@@ -1,14 +1,14 @@
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    ScrollView,
-    StatusBar,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ScrollView,
+  StatusBar,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -18,8 +18,14 @@ export default function SignInScreen() {
   const [rememberMe, setRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
 
+    const router = useRouter();
+
+    const handleSignIn = () => {
+       // Add your sign-in logic here if needed
+       router.push('/HomeScreen');
+    };
   return (
-    <SafeAreaView className="flex-1 bg-gray-50">
+    <SafeAreaView className="px-4 flex-1 bg-gray-50">
       <StatusBar barStyle="dark-content" />
       <ScrollView className="flex-1" contentContainerClassName="px-8 pt-5">
         {/* Header */}
@@ -32,7 +38,10 @@ export default function SignInScreen() {
               {"Don't have an account? "}
             </Text>
             <TouchableOpacity>
-              <Link href="/(Auth)/SignupScreen" className="text-base text-[#ff4757] font-semibold">
+              <Link
+                href="/(Auth)/SignupScreen"
+                className="text-base text-[#ff4757] font-semibold"
+              >
                 Sign Up
               </Link>
             </TouchableOpacity>
@@ -107,7 +116,10 @@ export default function SignInScreen() {
         </View>
 
         {/* Sign In Button */}
-        <TouchableOpacity className="rounded-2xl overflow-hidden mb-8">
+        <TouchableOpacity
+          onPress={handleSignIn}
+          className="rounded-2xl overflow-hidden mb-8"
+        >
           <LinearGradient
             colors={["#ff4757", "#e91e63", "#c2185b"]}
             start={{ x: 0, y: 0 }}

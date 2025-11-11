@@ -2,7 +2,6 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   Image,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
@@ -10,6 +9,7 @@ import {
   View,
 } from "react-native";
 
+import { SafeAreaView } from "react-native-safe-area-context";
 interface Product {
   id: string;
   name: string;
